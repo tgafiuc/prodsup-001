@@ -13,4 +13,6 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/target/failsafe-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-    - bundle exec rake custom:test:suite
+    - bundle exec rake spinach:
+        environment:
+          RAILS_ENV: test
